@@ -28,6 +28,7 @@ public class Bullet : MonoBehaviour
         if (!other.gameObject.CompareTag("Player"))
         {
             Destroy(this.gameObject);
+            FindObjectOfType<AudioManager>().PlaySound("BulletHit");
         }
         
     }

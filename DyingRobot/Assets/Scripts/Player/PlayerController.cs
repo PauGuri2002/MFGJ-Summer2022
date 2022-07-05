@@ -39,6 +39,7 @@ public class PlayerController : MonoBehaviour
             fireTimer = fireCooldown;
             GameObject newBullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity);
             newBullet.GetComponent<Bullet>().direction = fireAction.ReadValue<Vector2>();
+            FindObjectOfType<AudioManager>().PlaySound("Fire");
         }
 
         if(interactAction.ReadValue<float>() > 0)
