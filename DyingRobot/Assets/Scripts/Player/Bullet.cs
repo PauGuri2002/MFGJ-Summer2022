@@ -17,9 +17,14 @@ public class Bullet : MonoBehaviour
     void Update()
     {
         transform.position += (Vector3)direction * Time.deltaTime * speed;
-        if(Mathf.Abs(transform.position.x) > 15 || Mathf.Abs(transform.position.y) > 15)
+        if(Mathf.Abs(transform.position.x) > 10 || Mathf.Abs(transform.position.y) > 10)
         {
             Destroy(this.gameObject);
         }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        Debug.Log("Collided");
     }
 }

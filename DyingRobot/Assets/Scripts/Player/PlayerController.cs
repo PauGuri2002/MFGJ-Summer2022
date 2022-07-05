@@ -10,6 +10,12 @@ public class PlayerController : MonoBehaviour
     private InputAction fireAction;
     private InputAction interactAction;
     public GameObject bulletPrefab;
+    private Rigidbody2D rb;
+    private Vector3 moveDirection;
+    public float speed = 0.1f;
+    
+    public float fireCooldown = 0.2f;
+    private float fireTimer;
 
     // Start is called before the first frame update
     void Awake()
@@ -18,15 +24,19 @@ public class PlayerController : MonoBehaviour
         moveAction = playerInput.actions["Move"];
         fireAction = playerInput.actions["Fire"];
         interactAction = playerInput.actions["Interact"];
+        fireTimer = fireCooldown;
+
+        rb = GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        transform.position += (Vector3)moveAction.ReadValue<Vector2>();
-        
-        if(fireAction.ReadValue<Vector2>() != Vector2.zero)
+        moveDirection = (Vector3)moveAction.ReadValue<Vector2>();
+
+        if (fireAction.ReadValue<Vector2>() != Vector2.zero && fireTimer <= 0)
         {
+            fireTimer = fireCooldown;
             GameObject newBullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity);
             newBullet.GetComponent<Bullet>().direction = fireAction.ReadValue<Vector2>();
         }
@@ -36,20 +46,17 @@ public class PlayerController : MonoBehaviour
             Debug.Log("Interacted");
             transform.localScale += new Vector3(5,5,5);
         }
+
+        fireTimer -= Time.deltaTime;
     }
 
-    public void Move(InputAction.CallbackContext context)
+    void FixedUpdate()
     {
-
+        rb.MovePosition(transform.position + moveDirection*speed);
     }
 
-    public void Fire(InputAction.CallbackContext context)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-
-    }
-
-    public void Interact(InputAction.CallbackContext context)
-    {
-
+        Debug.Log("Trigger Enter");
     }
 }
