@@ -27,6 +27,8 @@ public class PlayerController : MonoBehaviour
         fireTimer = fireCooldown;
 
         rb = GetComponent<Rigidbody2D>();
+
+        DontDestroyOnLoad(gameObject);
     }
 
     // Update is called once per frame
@@ -45,7 +47,7 @@ public class PlayerController : MonoBehaviour
         if(interactAction.ReadValue<float>() > 0)
         {
             Debug.Log("Interacted");
-            transform.localScale += new Vector3(5,5,5);
+            FindObjectOfType<DoorManager>().UnlockDoors();
         }
 
         fireTimer -= Time.deltaTime;
@@ -54,10 +56,5 @@ public class PlayerController : MonoBehaviour
     void FixedUpdate()
     {
         rb.MovePosition(transform.position + moveDirection*speed);
-    }
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        Debug.Log("Trigger Enter");
     }
 }
