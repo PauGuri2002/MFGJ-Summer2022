@@ -6,11 +6,13 @@ public class Door : MonoBehaviour
 {
     private bool isLocked = true;
     public Vector2 doorPosition;
+    Animator animator;
 
     // Start is called before the first frame update
     void Awake()
     {
         DontDestroyOnLoad(gameObject);
+        animator = GetComponent<Animator>();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -27,12 +29,12 @@ public class Door : MonoBehaviour
     public void Lock()
     {
         isLocked = true;
-        GetComponent<SpriteRenderer>().color = new Color32(255, 0, 0, 255);
+        animator.Play("DoorClosing");
     }
 
     public void Unlock()
     {
         isLocked = false;
-        GetComponent<SpriteRenderer>().color = new Color32(0, 255, 0, 255);
+        animator.Play("DoorOpening");
     }
 }
