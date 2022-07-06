@@ -27,14 +27,16 @@ public class DoorManager : MonoBehaviour
 
     public void EnterDoor(Door door, GameObject player)
     {
-        foreach(Door d in doors)
+        lastUsedDoor = Array.Find(doors, d => d.doorPosition == door.doorPosition * -1);
+
+        foreach (Door d in doors)
         {
-            d.Lock();
+            d.Lock(d == lastUsedDoor);
         }
 
         FindObjectOfType<AudioManager>().PlaySound("Sweep");
 
-        lastUsedDoor = Array.Find(doors, d => d.doorPosition == door.doorPosition * -1);
+        
         SceneManager.LoadScene("Level2");
         Vector3 newPlayerPosition = (player.transform.position * -1);
         GameObject.FindGameObjectWithTag("Player").transform.position = newPlayerPosition;

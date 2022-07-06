@@ -26,10 +26,16 @@ public class Door : MonoBehaviour
         }
     }
 
-    public void Lock()
+    public void Lock(bool playAnimation)
     {
         isLocked = true;
-        animator.Play("DoorClosing");
+        if (playAnimation)
+        {
+            animator.Play("DoorClosing");
+        } else
+        {
+            animator.Play("DoorClosedInstant");
+        }
     }
 
     public void Unlock()

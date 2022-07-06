@@ -7,7 +7,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: None
+  m_Name: DoorClosedInstant
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
@@ -111,10 +111,10 @@ AnimatorStateMachine:
   m_ChildStates:
   - serializedVersion: 1
     m_State: {fileID: -6502918491788770258}
-    m_Position: {x: 90, y: 210, z: 0}
+    m_Position: {x: 100, y: 200, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -3596615617363343041}
-    m_Position: {x: 320, y: 210, z: 0}
+    m_Position: {x: 330, y: 200, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -8477355193667905649}
     m_Position: {x: 350, y: 120, z: 0}

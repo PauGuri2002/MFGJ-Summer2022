@@ -44,7 +44,6 @@ public class PlayerController : MonoBehaviour
             moveDirection = currentMoveDirection;
             if (acceleration < 1f) {
                 acceleration += 1 / (accelerationTime / Time.deltaTime);
-                Debug.Log("Accel: " + acceleration);
             } else
             {
                 acceleration = 1f;
@@ -54,7 +53,6 @@ public class PlayerController : MonoBehaviour
             if (acceleration > 0f)
             {
                 acceleration -= 1 / (decelerationTime / Time.deltaTime);
-                Debug.Log("Accel: " + acceleration);
             } else
             {
                 acceleration = 0f;
