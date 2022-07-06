@@ -6,6 +6,7 @@ public class Bullet : MonoBehaviour
 {
     [SerializeField] private float speed = 1.0f;
     [HideInInspector] public Vector2 direction;
+    public GameObject hitParticle;
 
     // Start is called before the first frame update
     void Start()
@@ -27,6 +28,7 @@ public class Bullet : MonoBehaviour
     {
         if (!other.gameObject.CompareTag("Player"))
         {
+            Instantiate(hitParticle, transform.position, Quaternion.Euler(-90,0,0));
             Destroy(this.gameObject);
             FindObjectOfType<AudioManager>().PlaySound("BulletHit");
         }

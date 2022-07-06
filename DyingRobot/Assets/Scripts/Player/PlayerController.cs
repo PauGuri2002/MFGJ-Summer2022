@@ -9,15 +9,19 @@ public class PlayerController : MonoBehaviour
     private InputAction moveAction;
     private InputAction fireAction;
     private InputAction interactAction;
-    public GameObject bulletPrefab;
+
     private Rigidbody2D rb;
     private Vector3 moveDirection;
+    private float acceleration = 0f;
     public float speed = 0.1f;
-    
+    public float accelerationTime = 0.5f;
+    public float decelerationTime = 0.5f;
+
+    public GameObject bulletPrefab;
     public float fireCooldown = 0.2f;
     private float fireTimer;
+    public float bulletMomentum = 0.2f;
 
-    // Start is called before the first frame update
     void Awake()
     {
         playerInput = GetComponent<PlayerInput>();
@@ -31,19 +35,43 @@ public class PlayerController : MonoBehaviour
         DontDestroyOnLoad(gameObject);
     }
 
-    // Update is called once per frame
     void Update()
     {
-        moveDirection = (Vector3)moveAction.ReadValue<Vector2>();
+        // MOVEMENT
+        Vector3 currentMoveDirection = (Vector3)moveAction.ReadValue<Vector2>();
+        if(currentMoveDirection != Vector3.zero)
+        {
+            moveDirection = currentMoveDirection;
+            if (acceleration < 1f) {
+                acceleration += 1 / (accelerationTime / Time.deltaTime);
+                Debug.Log("Accel: " + acceleration);
+            } else
+            {
+                acceleration = 1f;
+            }
+        } else
+        {
+            if (acceleration > 0f)
+            {
+                acceleration -= 1 / (decelerationTime / Time.deltaTime);
+                Debug.Log("Accel: " + acceleration);
+            } else
+            {
+                acceleration = 0f;
+                moveDirection = currentMoveDirection;
+            }
+        }
 
+        // FIRING
         if (fireAction.ReadValue<Vector2>() != Vector2.zero && fireTimer <= 0)
         {
             fireTimer = fireCooldown;
             GameObject newBullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity);
-            newBullet.GetComponent<Bullet>().direction = fireAction.ReadValue<Vector2>();
+            newBullet.GetComponent<Bullet>().direction = fireAction.ReadValue<Vector2>() + ((Vector2)moveDirection * acceleration * bulletMomentum);
             FindObjectOfType<AudioManager>().PlaySound("Fire");
         }
 
+        // INTERACTION
         if(interactAction.ReadValue<float>() > 0)
         {
             Debug.Log("Interacted");
@@ -55,6 +83,6 @@ public class PlayerController : MonoBehaviour
 
     void FixedUpdate()
     {
-        rb.MovePosition(transform.position + moveDirection*speed);
+        rb.MovePosition(transform.position + moveDirection * speed * acceleration);
     }
 }

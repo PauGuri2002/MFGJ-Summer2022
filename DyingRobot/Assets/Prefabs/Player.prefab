@@ -29,7 +29,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4722977388012625992}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.79, y: 0.81, z: -1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 10, y: 10, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -218,9 +218,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f5a87ee23bc9aa4c96d82a4d4f280c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletPrefab: {fileID: 7048644476339141137, guid: 5191bacf58623364abf47975389f33ea, type: 3}
   speed: 0.1
+  accelerationTime: 0.2
+  decelerationTime: 0.2
+  bulletPrefab: {fileID: 7048644476339141137, guid: 5191bacf58623364abf47975389f33ea, type: 3}
   fireCooldown: 0.2
+  bulletMomentum: 0.2
 --- !u!50 &4722977388012625998
 Rigidbody2D:
   serializedVersion: 4
