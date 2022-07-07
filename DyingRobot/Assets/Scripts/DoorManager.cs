@@ -23,6 +23,7 @@ public class DoorManager : MonoBehaviour
                 d.Unlock();
             }
         }
+        FindObjectOfType<AudioManager>().PlaySound("Sweep");
     }
 
     public void EnterDoor(Door door, GameObject player)
@@ -33,10 +34,7 @@ public class DoorManager : MonoBehaviour
         {
             d.Lock(d == lastUsedDoor);
         }
-
         FindObjectOfType<AudioManager>().PlaySound("Sweep");
-
-        
         SceneManager.LoadScene("Level2");
         Vector3 newPlayerPosition = (player.transform.position * -1);
         GameObject.FindGameObjectWithTag("Player").transform.position = newPlayerPosition;
