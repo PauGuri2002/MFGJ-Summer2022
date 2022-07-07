@@ -20,9 +20,6 @@ public class Door : MonoBehaviour
         if (collision.gameObject.CompareTag("Player") && !isLocked)
         {
             FindObjectOfType<DoorManager>().EnterDoor(this, collision.gameObject);
-        } else
-        {
-            Debug.Log("Door is locked!");
         }
     }
 

@@ -8,7 +8,6 @@ public class PlayerController : MonoBehaviour
     private PlayerInput playerInput;
     private InputAction moveAction;
     private InputAction fireAction;
-    private InputAction interactAction;
 
     private Rigidbody2D rb;
     private Vector3 moveDirection;
@@ -22,12 +21,13 @@ public class PlayerController : MonoBehaviour
     private float fireTimer;
     public float bulletMomentum = 0.2f;
 
+    
+
     void Awake()
     {
         playerInput = GetComponent<PlayerInput>();
         moveAction = playerInput.actions["Move"];
         fireAction = playerInput.actions["Fire"];
-        interactAction = playerInput.actions["Interact"];
         fireTimer = fireCooldown;
 
         rb = GetComponent<Rigidbody2D>();
@@ -70,16 +70,6 @@ public class PlayerController : MonoBehaviour
         }
 
         fireTimer -= Time.deltaTime;
-    }
-
-    // INTERACTION
-    void Interact(InputAction.CallbackContext context)
-    {
-        if (context.started)
-        {
-            Debug.Log("Interacted");
-            FindObjectOfType<Jail>().Unlock();
-        }
     }
 
     void FixedUpdate()
