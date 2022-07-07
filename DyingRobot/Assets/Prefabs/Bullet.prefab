@@ -99,7 +99,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43e232332040e704685ebe94df5b48a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 10
+  speed: 15
   direction: {x: 0, y: 0}
   hitParticle: {fileID: 6042946315066036480, guid: cad7a5f6671358846a5053145c62be6c, type: 3}
 --- !u!58 &3638790943517206829
