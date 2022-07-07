@@ -26,7 +26,7 @@ public class Bullet : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (!other.gameObject.CompareTag("Player"))
+        if (!other.gameObject.CompareTag("Player") && !other.gameObject.CompareTag("Door") && !other.gameObject.CompareTag("Target"))
         {
             Instantiate(hitParticle, transform.position, Quaternion.Euler(-90,0,0));
             Destroy(this.gameObject);
