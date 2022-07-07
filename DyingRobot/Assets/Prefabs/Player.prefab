@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 4722977388012625993}
   - component: {fileID: 4722977388012625995}
   - component: {fileID: 4722977388012625996}
+  - component: {fileID: 794973187159937088}
   - component: {fileID: 4722977388012625998}
   - component: {fileID: 4722977388012625999}
   m_Layer: 0
@@ -224,6 +225,18 @@ MonoBehaviour:
   bulletPrefab: {fileID: 7048644476339141137, guid: 5191bacf58623364abf47975389f33ea, type: 3}
   fireCooldown: 0.2
   bulletMomentum: 0.2
+--- !u!114 &794973187159937088
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4722977388012625992}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c51c5192234bd94e9a8f28930da1640, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!50 &4722977388012625998
 Rigidbody2D:
   serializedVersion: 4

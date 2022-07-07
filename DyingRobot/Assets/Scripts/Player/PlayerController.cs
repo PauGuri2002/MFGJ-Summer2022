@@ -86,13 +86,4 @@ public class PlayerController : MonoBehaviour
     {
         rb.MovePosition(transform.position + moveDirection * speed * acceleration);
     }
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.gameObject.CompareTag("Target"))
-        {
-            Debug.Log("ROBOT SAVED");
-            FindObjectOfType<DoorManager>().UnlockDoors();
-        }
-    }
 }
