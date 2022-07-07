@@ -32,8 +32,6 @@ public class DialogueManager : MonoBehaviour
 
         while (textObject.text.Length < text.Length)
         {
-            Debug.Log(textObject.text.Length + " vs " + text.Length);
-
             textObject.text += textArr[textObject.text.Length];
             yield return new WaitForSeconds(typingDelay);
         }
@@ -47,7 +45,6 @@ public class DialogueManager : MonoBehaviour
 
         if(writingCoroutine != null)
         {
-            Debug.Log(textIndex);
             StopCoroutine(writingCoroutine);
             writingCoroutine = null;
             textObject.text = text[textIndex];

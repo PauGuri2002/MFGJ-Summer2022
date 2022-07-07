@@ -5,20 +5,20 @@ using UnityEngine.InputSystem;
 
 public class PlayerHandicaps : MonoBehaviour
 {
-    private Handicap[] handicaps = new Handicap[]
-    {
-        new Handicap("speed",0.5f),
-        new Handicap("fireCooldown",2f)
-    };
+    public HandicapList handicapList;
+    private Handicap[] handicaps;
     private PlayerController pc;
     private DialogueManager dialogueManager;
     private TargetRobot collidedTarget;
+
+    private Handicap chosenHandicap;
 
     // Start is called before the first frame update
     void Start()
     {
         pc = GetComponent<PlayerController>();
         dialogueManager = FindObjectOfType<DialogueManager>();
+        handicaps = handicapList.Handicaps;
     }
 
     // INTERACTION
@@ -32,12 +32,12 @@ public class PlayerHandicaps : MonoBehaviour
             {
                 if (collidedTarget.healed)
                 {
-                    dialogueManager.ShowDialogue(new string[] { "You saved me!", "Thanks! :)" });
+                    dialogueManager.ShowDialogue(chosenHandicap.dialogue);
                     return;
                 }
                 collidedTarget.healed = true;
 
-                Handicap chosenHandicap = handicaps[Random.Range(0, handicaps.Length)];
+                chosenHandicap = handicaps[Random.Range(0, handicaps.Length)];
                 Debug.Log("Lost " + chosenHandicap.property);
                 switch (chosenHandicap.property)
                 {
@@ -51,7 +51,7 @@ public class PlayerHandicaps : MonoBehaviour
                         break;
                 }
 
-                dialogueManager.ShowDialogue(new string[] { "You saved me!", "Thanks! :)", "(you have lost " + chosenHandicap.property + ")" });
+                dialogueManager.ShowDialogue(chosenHandicap.dialogue);
                 FindObjectOfType<DoorManager>().UnlockDoors();
             } else
             {

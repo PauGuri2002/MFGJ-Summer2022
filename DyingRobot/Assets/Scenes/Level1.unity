@@ -1316,6 +1316,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 794973187159937088, guid: b8cbb8bfce9852d469246492fc3d5eff, type: 3}
+      propertyPath: handicapList
+      value: 
+      objectReference: {fileID: 11400000, guid: ce2afe469ed0c4b43b30e6ac151bd084, type: 2}
+    - target: {fileID: 794973187159937088, guid: b8cbb8bfce9852d469246492fc3d5eff, type: 3}
+      propertyPath: handicaps.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 794973187159937088, guid: b8cbb8bfce9852d469246492fc3d5eff, type: 3}
+      propertyPath: handicaps.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: b7c888a0d9e18d942a725fec4a2f5a76, type: 2}
     - target: {fileID: 4722977388012625992, guid: b8cbb8bfce9852d469246492fc3d5eff, type: 3}
       propertyPath: m_Name
       value: Player
@@ -1383,6 +1395,10 @@ PrefabInstance:
     - target: {fileID: 4722977388012625996, guid: b8cbb8bfce9852d469246492fc3d5eff, type: 3}
       propertyPath: decelerationTime
       value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4722977388012625999, guid: b8cbb8bfce9852d469246492fc3d5eff, type: 3}
+      propertyPath: m_Size.x
+      value: 0.08
       objectReference: {fileID: 0}
     - target: {fileID: 4722977388012625999, guid: b8cbb8bfce9852d469246492fc3d5eff, type: 3}
       propertyPath: m_Offset.x
