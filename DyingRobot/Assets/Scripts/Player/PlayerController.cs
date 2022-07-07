@@ -69,18 +69,30 @@ public class PlayerController : MonoBehaviour
             FindObjectOfType<AudioManager>().PlaySound("Fire");
         }
 
-        // INTERACTION
-        if(interactAction.ReadValue<float>() > 0)
+        fireTimer -= Time.deltaTime;
+    }
+
+    // INTERACTION
+    void Interact(InputAction.CallbackContext context)
+    {
+        if (context.started)
         {
             Debug.Log("Interacted");
-            FindObjectOfType<DoorManager>().UnlockDoors();
+            FindObjectOfType<Jail>().Unlock();
         }
-
-        fireTimer -= Time.deltaTime;
     }
 
     void FixedUpdate()
     {
         rb.MovePosition(transform.position + moveDirection * speed * acceleration);
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Target"))
+        {
+            Debug.Log("ROBOT SAVED");
+            FindObjectOfType<DoorManager>().UnlockDoors();
+        }
     }
 }
