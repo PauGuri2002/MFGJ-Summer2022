@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   handicaps:
   - property: speed
-    percentage: 0.5
+    percentage: 0.8
     dialogue:
     - dialogueText: Nice leg bro
       dialogueSound: {fileID: 8300000, guid: 1cdf9a912832b7e4db0dc1fbec4c1d2f, type: 3}

@@ -7,11 +7,13 @@ public class Bullet : MonoBehaviour
     [SerializeField] private float speed = 1.0f;
     [HideInInspector] public Vector2 direction;
     public GameObject hitParticle;
+    public Sprite[] sprites;
+    public float rotationSpeed = 20f;
 
-    // Start is called before the first frame update
     void Start()
     {
-        
+        GetComponent<SpriteRenderer>().sprite = sprites[Random.Range(0, sprites.Length)];
+        transform.rotation = Quaternion.Euler(0, 0, Random.Range(0f,360f));
     }
 
     // Update is called once per frame
@@ -22,6 +24,8 @@ public class Bullet : MonoBehaviour
         {
             Destroy(this.gameObject);
         }
+
+        transform.Rotate(0, 0, rotationSpeed * Time.deltaTime);
     }
 
     private void OnTriggerEnter2D(Collider2D other)
