@@ -7,51 +7,56 @@ public class DialogueManager : MonoBehaviour
 {
     public TMP_Text textObject;
     public GameObject dialogueBox;
+    private AudioSource audioSource;
     public float typingDelay = 0.08f;
-    string[] text;
-    int textIndex = 0;
+    DialoguePart[] dialogue;
+    int dialogueIndex = 0;
     Coroutine writingCoroutine = null;
 
     private void Awake()
     {
         DontDestroyOnLoad(gameObject);
+        audioSource = GetComponent<AudioSource>();
     }
 
-    public void ShowDialogue(string[] textToWrite)
+    public void ShowDialogue(DialoguePart[] _dialogue)
     {
-        textIndex = 0;
-        text = textToWrite;
+        dialogueIndex = 0;
+        dialogue = _dialogue;
         dialogueBox.SetActive(true);
-        writingCoroutine = StartCoroutine(WriteText(text[0]));
+        writingCoroutine = StartCoroutine(WriteText(dialogue[0]));
     }
 
-    private IEnumerator WriteText(string text)
+    private IEnumerator WriteText(DialoguePart dialoguePart)
     {
-        char[] textArr = text.ToCharArray();
+        char[] textArr = dialoguePart.dialogueText.ToCharArray();
         textObject.text = "";
+        audioSource.clip = dialoguePart.dialogueSound;
 
-        while (textObject.text.Length < text.Length)
+        while (textObject.text.Length < dialoguePart.dialogueText.Length)
         {
             textObject.text += textArr[textObject.text.Length];
+            audioSource.pitch = Random.Range(0.9f, 1.1f);
+            audioSource.Play();
             yield return new WaitForSeconds(typingDelay);
         }
-        textIndex++;
+        dialogueIndex++;
         writingCoroutine = null;
     }
 
     public void Interact()
     {
-        if (!dialogueBox.activeSelf || text == null) { return; }
+        if (!dialogueBox.activeSelf || dialogue == null) { return; }
 
         if(writingCoroutine != null)
         {
             StopCoroutine(writingCoroutine);
             writingCoroutine = null;
-            textObject.text = text[textIndex];
-            textIndex++;
-        } else if(textIndex < text.Length)
+            textObject.text = dialogue[dialogueIndex].dialogueText;
+            dialogueIndex++;
+        } else if(dialogueIndex < dialogue.Length)
         {
-            writingCoroutine = StartCoroutine(WriteText(text[textIndex]));
+            writingCoroutine = StartCoroutine(WriteText(dialogue[dialogueIndex]));
         } else
         {
             dialogueBox.SetActive(false);

@@ -28,7 +28,7 @@ public class PlayerHandicaps : MonoBehaviour
         {
             FindObjectOfType<Jail>().Unlock();
 
-            if(collidedTarget != null && !dialogueManager.dialogueBox.activeSelf)
+            if (collidedTarget != null && !dialogueManager.dialogueBox.activeSelf)
             {
                 if (collidedTarget.healed)
                 {

@@ -16,12 +16,18 @@ MonoBehaviour:
   - property: speed
     percentage: 0.5
     dialogue:
-    - Thank you for your leg, I can finally walk now!
-    - Fuck you byeeeeeee
-    - (you lost a leg, speed has decreased)
+    - dialogueText: Nice leg bro
+      dialogueSound: {fileID: 8300000, guid: 1cdf9a912832b7e4db0dc1fbec4c1d2f, type: 3}
+    - dialogueText: Wow 69 420 B)
+      dialogueSound: {fileID: 8300000, guid: 1cdf9a912832b7e4db0dc1fbec4c1d2f, type: 3}
+    - dialogueText: (you gave away a leg, speed decreased)
+      dialogueSound: {fileID: 8300000, guid: 7c0fc17d940f562479e3596e1664803b, type: 3}
   - property: fireCooldown
     percentage: 2
     dialogue:
-    - Nice arm bro
-    - And nice cock
-    - (you lost your arm, fire rate has decreased)
+    - dialogueText: Wow thanks so much for the arm!!!
+      dialogueSound: {fileID: 8300000, guid: 1cdf9a912832b7e4db0dc1fbec4c1d2f, type: 3}
+    - dialogueText: Fuck you bitch byeee
+      dialogueSound: {fileID: 8300000, guid: 1cdf9a912832b7e4db0dc1fbec4c1d2f, type: 3}
+    - dialogueText: (you gave away an arm, fire rate decreased)
+      dialogueSound: {fileID: 8300000, guid: 7c0fc17d940f562479e3596e1664803b, type: 3}

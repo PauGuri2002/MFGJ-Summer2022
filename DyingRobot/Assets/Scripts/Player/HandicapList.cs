@@ -9,3 +9,20 @@ public class HandicapList : ScriptableObject
 
     public Handicap[] Handicaps => handicaps;
 }
+
+
+[System.Serializable]
+public class Handicap
+{
+    public string property;
+    public float percentage;
+    [NonReorderable] public DialoguePart[] dialogue;
+}
+
+
+[System.Serializable]
+public class DialoguePart
+{
+    [TextArea] public string dialogueText;
+    public AudioClip dialogueSound;
+}
