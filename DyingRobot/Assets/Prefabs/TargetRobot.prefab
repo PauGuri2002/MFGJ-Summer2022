@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 3442573719062555606}
   - component: {fileID: 3442573719062555607}
   - component: {fileID: 607261108680945324}
+  - component: {fileID: 5656864211994011985}
   m_Layer: 0
   m_Name: TargetRobot
   m_TagString: Target
@@ -124,3 +125,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 088c66bfcf23a4f4e83b1ad094004f69, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  healed: 0
+--- !u!70 &5656864211994011985
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3442573719062555604}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_Size: {x: 0.08, y: 0.16}
+  m_Direction: 0
