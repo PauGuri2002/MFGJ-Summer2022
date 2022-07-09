@@ -52,7 +52,7 @@ public class PlayerHandicaps : MonoBehaviour
                 }
 
                 dialogueManager.ShowDialogue(chosenHandicap.dialogue);
-                FindObjectOfType<DoorManager>().UnlockDoors();
+                FindObjectOfType<LevelManager>().UnlockDoors();
             } else
             {
                 dialogueManager.Interact();

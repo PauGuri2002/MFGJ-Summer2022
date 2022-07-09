@@ -11,7 +11,6 @@ public class Door : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
-        DontDestroyOnLoad(gameObject);
         animator = GetComponent<Animator>();
     }
 
@@ -19,7 +18,7 @@ public class Door : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player") && !isLocked)
         {
-            FindObjectOfType<DoorManager>().EnterDoor(this, collision.gameObject);
+            FindObjectOfType<LevelManager>().EnterDoor(this, collision.gameObject);
         }
     }
 
